@@ -1,13 +1,5 @@
-﻿using System.Text;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+﻿using System.Windows;
+using System.Windows.Forms;
 
 namespace DeskEriko
 {
@@ -16,9 +8,29 @@ namespace DeskEriko
     /// </summary>
     public partial class MainWindow : Window
     {
+
+        /// <summary>
+        /// 收入隐藏栏的小图标配置
+        /// </summary>
+        private NotifyIcon _notifyIcon;
+
         public MainWindow()
         {
             InitializeComponent();
+
+            _notifyIcon = new();
+            _notifyIcon.Icon = new("pack://application:,,,/Resources/Icon/eriko_app.ico");
+            _notifyIcon.Text = "eriko";
+            _notifyIcon.Visible = true;
+            _notifyIcon.DoubleClick += IconDoubleClick;
+        }
+
+
+        private void IconDoubleClick(object? sender, EventArgs e)
+        {
+            this.Show();
+            this.WindowState = WindowState.Normal;
+            this.Activate();
         }
     }
 }
