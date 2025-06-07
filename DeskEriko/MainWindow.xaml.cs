@@ -1,5 +1,4 @@
 ﻿using System.Windows;
-using System.Windows.Forms;
 
 namespace DeskEriko
 {
@@ -12,20 +11,26 @@ namespace DeskEriko
         /// <summary>
         /// 收入隐藏栏的小图标配置
         /// </summary>
-        private NotifyIcon _notifyIcon;
+        private readonly NotifyIcon _notifyIcon;
 
         public MainWindow()
         {
             InitializeComponent();
 
-            _notifyIcon = new();
-            _notifyIcon.Icon = new("pack://application:,,,/Resources/Icon/eriko_app.ico");
-            _notifyIcon.Text = "eriko";
-            _notifyIcon.Visible = true;
+            _notifyIcon = new()
+            {
+                Icon = new("pack://application:,,,/Resources/Icon/eriko_app.ico"),
+                Text = "eriko",
+                Visible = true
+            };
             _notifyIcon.DoubleClick += IconDoubleClick;
         }
 
-
+        /// <summary>
+        /// 小图标双击时
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void IconDoubleClick(object? sender, EventArgs e)
         {
             this.Show();
