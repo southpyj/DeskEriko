@@ -7,6 +7,7 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <UseWPF>true</UseWPF>
       <UseWindowsForms>true</UseWindowsForms>
+      <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
 
   <ItemGroup>
@@ -14,14 +15,13 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Resources\Icons\" />
     <Folder Include="ViewModels\" />
     <Folder Include="Views\" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resource\Icons\*.ico"/>
-    <Resource Include="Resource\Icons\*.png"/>
-    <Resource Include="Resource\Icons\*.jpg"/>
+    <Resource Include="Resource\Icons\*.ico" />
+    <Resource Include="Resource\Icons\*.png" />
+    <Resource Include="Resource\Icons\*.jpg" />
   </ItemGroup>
 
 </Project>

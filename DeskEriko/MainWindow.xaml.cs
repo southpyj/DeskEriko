@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using DeskEriko.Common;
+using System.Windows;
 
 namespace DeskEriko
 {
@@ -11,27 +12,25 @@ namespace DeskEriko
         /// <summary>
         /// 收入隐藏栏的小图标配置
         /// </summary>
-        private readonly NotifyIcon _notifyIcon;
+        private TrayIconManager _trayManager = new();
 
         public MainWindow()
         {
             InitializeComponent();
+            InitTrayManager();
+        }
 
-            _notifyIcon = new()
-            {
-                Icon = new("pack://application:,,,/Resources/Icon/eriko_app.ico"),
-                Text = "eriko",
-                Visible = true
-            };
-            _notifyIcon.DoubleClick += IconDoubleClick;
+        private void InitTrayManager()
+        {
+            _trayManager.DoubleClick += ActiveWindow;
         }
 
         /// <summary>
-        /// 小图标双击时
+        /// 打开并激活主窗口
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void IconDoubleClick(object? sender, EventArgs e)
+        /// <param name="sender">触发事件的组件</param>
+        /// <param name="e">事件参数</param>
+        private void ActiveWindow(object? sender, EventArgs e)
         {
             this.Show();
             this.WindowState = WindowState.Normal;
